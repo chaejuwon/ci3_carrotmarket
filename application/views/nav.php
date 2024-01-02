@@ -9,13 +9,13 @@
           </a>
           <ul class="navbar-nav mb-2 mb-lg-0">           
             <li class="nav-item ml-5">
-              <a class="nav-link active" aria-current="page" href="/market/marketlist">중고거래123</a>
+              <a class="nav-link active" aria-current="page" href="/market/marketlist">중고거래</a>
             </li>
             <li class="nav-item ml-5">
               <a class="nav-link" href="/market/imgpush">동네업체</a>
             </li>
             <li class="nav-item ml-5">
-              <a class="nav-link" href="#">알바</a>
+              <a class="nav-link" href="/jobs/jobslist">알바</a>
             </li>
             <li class="nav-item ml-5">
               <a class="nav-link" href="#">커뮤니티</a>

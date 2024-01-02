@@ -62,8 +62,11 @@ class Product_model extends CI_Model {
     return $result;
    }
   
-  function detailget($id) {    
-    $product = $this->db->get_where('product', ['id' => $id])->row();
+  function detailget($id) {
+    $this->db->select('u.id, u.nickname, p.id, p.title, p.price, p.address, p.content, p.created, p.filename, p.userid');
+    $this->db->from('user as u');
+    $this->db->join('product as p', 'u.id = p.userid', 'inner');
+    $product = $this->db->get_where('product', ['p.id' => $id])->row();
     return $product;
   }
   

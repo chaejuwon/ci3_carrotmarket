@@ -2,7 +2,7 @@
   <input type="hidden" value="<?= $detail->id ?>" id="pid">
   <section class="section section1" id="marketDetailSection1">
     <div class="detail-container">
-      <div style="height:600px;overflow:hidden;border-radius:20px;">
+      <div style="height:400px;overflow:hidden;border-radius:20px;">
         <div id="slider-div">
           <div class="img-wrap">
             <img class="item" src="/uploads/<?= $detail->filename ?>" alt="">
@@ -25,13 +25,17 @@
             <div class="d-flex align-items-center">
               <img style="border-radius:50%;width:40px;height:40px;" src="/html/images/detail_user.png">
               <div class="ml-10 d-inline-block">
-                <p class="no-margins">배방토박12</p>
+                <p class="no-margins"><?= $detail->nickname ?>
                 <p class="no-margins"><?= $detail->address ?></p>
               </div>
-            </div>
-            <div>
+            </div>            
+            <?php
+              if($this->session->userdata('isLogin') == true && $this->session->userdata('userid') == $detail->userid ){
+            ?>
+            <div>            
               <a href="/market/marketpush/<?= $detail->id ?>" class="btn btn-warning">수정하기</a>  
             </div>
+            <?php } ?>
           </div>
           </div>
         </div>

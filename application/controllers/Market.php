@@ -69,15 +69,10 @@ class Market extends CI_Controller {
     $this->load->view('footer');
   }
   
-  public function marketdetail($id='') {     
+  public function marketdetail($id) {     
     $this->_head();
     
-    $id = $this->uri->segment(3);
-    
-    if($id != '') {
-       $data['detail'] = $this->product->detailget($id);
-    }
-   
+    $data['detail'] = $this->product->detailget($id);   
     $data['list'] = $this->product->detailgetAll();
     
     $this->load->view('market/detail', $data);

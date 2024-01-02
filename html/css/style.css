@@ -171,11 +171,59 @@
   border-top:1px solid #333333;
   border-bottom:1px solid #333333;
 }
+.btn-group i {
+  font-size:35px;
+}
+.chat-area {
+  appearance:none;
+  border:none;
+  background:#eee;
+  width:100%;
+  resize: none;
+  margin-top:5px;
+}
 /* -----------------board/detail----------------------- */
+/* -----------------jobs/list-------------------- */
+#jobsListSection1 {
+  background:#ffe2d2;
+  padding-top:30px;
+}
+#jobsListSection2 {
+  background:#ffffff;
+  padding:50px 0;
+}
+
+.job-img-wrap {
+  width:30%;
+  border-radius:10px;
+  overflow:hidden;
+}
+.job-img-wrap img {
+  border-radius:10px;
+}
+.job-text-wrap {
+  width:70%;
+  margin:auto 0 auto 10px;
+}
+.jobs-text-margin {
+  margin-top:5px;
+  margin-bottom:5px;
+}
+/* -----------------jobs/list-------------------- */
+
+/* -----------------jobs/Deatil-------------------- */
+#jobsDetailSection1 {
+  background:#ffffff;
+}
+#jobsDetailSection2 {
+  padding:20px 0 30px;
+}
+/* -----------------jobs/Deatil-------------------- */
 
 /* -----------------footer--------------------------------- */
 #footer {
   z-index:1;
+  border-top:1px solid #eee;
 }
 .footer-container {
   width:100%;

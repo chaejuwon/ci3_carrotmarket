@@ -17,12 +17,24 @@
         </div>
       </div>
     </div>
-  </section>
+<!--   </section> -->
   <section class="section section2" id="boardListSection2">
     <div class="section-container">
-      <div class="text-end">
-        <a href="/board/boardcreate" class="btn btn-success mb-20">등록하기</a>  
-      </div>  
+      <div class="row mb-20 justify-content-between align-items-center">
+        <div class="col-6">
+          <form id="bd_search" method="get" action="/board/boardlist">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="검색어(제목)을 입력해주세요." name="search" id="search" aria-describedby="search-btn" value="">
+                <div class="input-group-append">
+                  <button class="btn btn-success" type="submit" id="search-btn">검색</button>
+                </div>  
+            </div>
+          </form>            
+        </div>
+        <div class="col-2 text-end">
+          <a href="/board/boardcreate" class="btn btn-success">등록하기</a>  
+        </div>
+      </div>
       <table class="text-center">
         <colgroup>
           <col width="5%" />
@@ -43,29 +55,49 @@
           <th>삭제</th>
         </thead>
         <tbody>
-          <?php $i =1?>
-          <?php foreach($list as $entry) { ?>
-          <tr>
-<!--             <td><?=$i?></td> -->
-            <td><?= $entry->id ?></td>
-            <td><a href="/board/boarddetail/<?= $entry->id ?>"><?= $entry->title ?></a></td>
-            <td><?= $entry->nickname ?></td>
-            <td><?= $entry->created ?></td>
-            <td><?= $entry->hit?></td>
-            <td>
-              <?php
-              if ($entry->user_id == $this->session->userdata('userid')) {
-                  echo '<a class="fw-bold" href="/board/boardcreate/' . $entry->id . '">수정</a>';
-              } else {
-                echo '<span>내글아님</span>';
-              }
-              ?>                  
-            </td>
-            <td><a class="fw-bold" href="/board/boarddelete/<?= $entry->id ?>">삭제</a></td>
-          </tr>
-          <?php $i++;?>
-          <?php } ?>
+            <?php if (!empty($search)): ?>
+                <?php foreach ($search as $slist): ?>
+                    <tr>
+                        <td><?= $slist->id ?></td>
+                        <td><a href="/board/boarddetail/<?= $slist->id ?>"><?= $slist->title ?></a></td>
+                        <td><?= $slist->nickname ?></td>
+                        <td><?= $slist->created ?></td>
+                        <td><?= $slist->hit?></td>
+                        <td>
+                            <?php
+                            if ($slist->user_id == $this->session->userdata('userid')) {
+                                echo '<a class="fw-bold" href="/board/boardcreate/' . $slist->id . '">수정</a>';
+                            } else {
+                                echo '<span>내글아님</span>';
+                            }
+                            ?>                  
+                        </td>
+                        <td><a class="fw-bold" href="/board/boarddelete/<?= $slist->id ?>">삭제</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <?php foreach($list as $entry): ?>
+                    <tr>
+                        <td><?= $entry->id ?></td>
+                        <td><a href="/board/boarddetail/<?= $entry->id ?>"><?= $entry->title ?></a></td>
+                        <td><?= $entry->nickname ?></td>
+                        <td><?= $entry->created ?></td>
+                        <td><?= $entry->hit?></td>
+                        <td>
+                            <?php
+                            if ($entry->user_id == $this->session->userdata('userid')) {
+                                echo '<a class="fw-bold" href="/board/boardcreate/' . $entry->id . '">수정</a>';
+                            } else {
+                                echo '<span>내글아님</span>';
+                            }
+                            ?>                  
+                        </td>
+                        <td><a class="fw-bold" href="/board/boarddelete/<?= $entry->id ?>">삭제</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>          
         </tbody>
+        
       </table>
       <nav aria-label="Page navigation example" class="text-center">
         <ul class="pagination">
@@ -97,3 +129,20 @@
     </div>
   </section>
 </main>
+<script>
+//    $("#search-btn").click(function() {
+//        if ($("#search").val() == '') {
+//            alert("검색어를 입력하세요!");
+//            return false;
+//        } else {
+//            var act = "/board/boardlist?search=" + $("#search").val();
+//            $("#bd_search").attr('action', act).submit();
+//        }
+//    });
+
+//    function board_search_enter(form) {
+//        var keycode = window.event.keyCode;
+//        if (keycode == 13)
+//            $("#search-btn").click();
+//    }
+</script>
