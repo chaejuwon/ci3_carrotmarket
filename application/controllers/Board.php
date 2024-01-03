@@ -21,108 +21,77 @@ class Board extends CI_Controller {
        
     $search_term = $this->input->get('search');
     
-    if($search_term) {
-      
-      // 전체 항목 수 가져오기
-      $total_rows = $this->board->getAll();
-      // 페이지네이션 설정
-      $config['base_url'] = 'https://cjw02141.cafe24.com/board/boardlist';
-      $config['total_rows'] = $total_rows;
-      $config['per_page'] = 5;
-//       $config['uri_segment'] = 3; // URI에서 페이지 번호가 있는 세그먼트
-      $config['display_always'] = TRUE;
-      $config['use_fixed_page'] = TRUE;
-      $config['fixed_page_num'] = 10;
-      $config['enable_query_strings'] = TRUE;
-      $config['page_query_string'] = TRUE;
-
-      $config['attributes'] = ['class' => 'page-link'];
-      $config['first_link'] = false;
-      $config['last_link'] = false;
-      $config['first_tag_open'] = '<li class="page-item">';
-      $config['first_tag_close'] = '</li>';
-      $config['prev_link'] = '&laquo';
-      $config['prev_tag_open'] = '<li class="page-item">';
-      $config['prev_tag_close'] = '</li>';
-      $config['next_link'] = '&raquo';
-      $config['next_tag_open'] = '<li class="page-item">';
-      $config['next_tag_close'] = '</li>';
-      $config['last_tag_open'] = '<li class="page-item">';
-      $config['last_tag_close'] = '</li>';
-      $config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
-      $config['cur_tag_close'] = '</a></li>';
-      $config['num_tag_open'] = '<li class="page-item">';
-      $config['num_tag_close'] = '</li>';
-
-      $config['anchor_class'] = 'class="last"';
-      $config['use_page_numbers'] = TRUE;
-
-      // 페이지네이션 초기화
-      $this->pagination->initialize($config);
-
-      // 현재 페이지 번호 가져오기
-      $page = $this->uri->segment(3, 1);
-      $offset = ($page - 1) * $config['per_page'];
-
-      // 현재 페이지에 해당하는 데이터 가져오기
-      $data['search'] = array();
-      $data['search'] = $this->board->search_board($search_term, $config['per_page'], $offset);
-
-      // 페이지네이션 링크 생성
-      $data['pagination_links'] = $this->pagination->create_links();
+    if ($search_term) {
+        $total_rows = $this->board->getSearchTotal($search_term);
+    } else if($search_term = '') {
+        redirect('/board/boardlist');
     } else {
-      // 전체 항목 수 가져오기
-      $total_rows = $this->board->getAll();
-      // 페이지네이션 설정
-      $config['base_url'] = 'https://cjw02141.cafe24.com/board/boardlist';
-      $config['total_rows'] = $total_rows;
-      $config['per_page'] = 5;
-      $config['display_always'] = TRUE;
-      $config['use_fixed_page'] = TRUE;
-      $config['fixed_page_num'] = 10;
-      $config['enable_query_strings'] = TRUE;
-      $config['page_query_string'] = TRUE;
-      
-      $config['attributes'] = ['class' => 'page-link'];
-      $config['first_link'] = false;
-      $config['last_link'] = false;
-      $config['first_tag_open'] = '<li class="page-item">';
-      $config['first_tag_close'] = '</li>';
-      $config['prev_link'] = '&laquo';
-      $config['prev_tag_open'] = '<li class="page-item">';
-      $config['prev_tag_close'] = '</li>';
-      $config['next_link'] = '&raquo';
-      $config['next_tag_open'] = '<li class="page-item">';
-      $config['next_tag_close'] = '</li>';
-      $config['last_tag_open'] = '<li class="page-item">';
-      $config['last_tag_close'] = '</li>';
-      $config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
-      $config['cur_tag_close'] = '</a></li>';
-      $config['num_tag_open'] = '<li class="page-item">';
-      $config['num_tag_close'] = '</li>';
-
-      $config['anchor_class'] = 'class="last"';
-      $config['use_page_numbers'] = TRUE;
-
-      // 페이지네이션 초기화
-      $this->pagination->initialize($config);
-
-      // 현재 페이지 번호 가져오기
-      $page = $this->uri->segment(3, 1);
-      $offset = ($page - 1) * $config['per_page'];
-
-      // 현재 페이지에 해당하는 데이터 가져오기
-      $data['list'] = array();
-      $data['list'] = $this->board->get_data($config['per_page'], $offset);
-
-      // 페이지네이션 링크 생성
-      $data['pagination_links'] = $this->pagination->create_links();
+        $total_rows = $this->board->getAll();
     }
-    
 
+   
+    // 검색어 가져오기
+    $search_term = $this->input->get('search');
     
-    $this->load->view('board/list', $data);   
+     // 페이지네이션 설정
+    $config['base_url'] = 'https://cjw02141.cafe24.com/board/boardlist';
+    $config['total_rows'] = $total_rows;
+    $config['per_page'] = 5;
+    $config['display_always'] = TRUE;
+    $config['use_fixed_page'] = TRUE;
+    $config['fixed_page_num'] = 10;
+    $config['enable_query_strings'] = TRUE;
+    $config['reuse_query_string'] =TRUE;
+    $config['page_query_string'] = TRUE;
+    $config['query_string_segment'] = 'per_page';
+    $config['attributes'] = ['class' => 'page-link'];
+    $config['first_link'] = false;
+    $config['last_link'] = false;
+    $config['first_tag_open'] = '<li class="page-item">';
+    $config['first_tag_close'] = '</li>';
+    $config['prev_link'] = '&laquo';
+    $config['prev_tag_open'] = '<li class="page-item">';
+    $config['prev_tag_close'] = '</li>';
+    $config['next_link'] = '&raquo';
+    $config['next_tag_open'] = '<li class="page-item">';
+    $config['next_tag_close'] = '</li>';
+    $config['last_tag_open'] = '<li class="page-item">';
+    $config['last_tag_close'] = '</li>';
+    $config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+    $config['cur_tag_close'] = '</a></li>';
+    $config['num_tag_open'] = '<li class="page-item">';
+    $config['num_tag_close'] = '</li>';
+    $config['anchor_class'] = 'class="last"';
+    $config['use_page_numbers'] = TRUE;
 
+    // 페이지네이션 초기화
+    $this->pagination->initialize($config);
+
+    // 현재 페이지 번호 가져오기
+    $page = $this->input->get('per_page', TRUE); // 쿼리스트링으로부터 페이지 번호 가져오기
+    $page = $page ? $page : 1; // 페이지 번호가 없으면 1로 설정
+    $offset = ($page - 1) * $config['per_page'];
+
+    if ($search_term) {
+        // 검색이 있을 때의 처리
+//         $total_rows = $this->board->getSearchTotal($search_term);
+        $data['search'] = $this->board->search_board($search_term, $config['per_page'], $offset);
+    } else {
+        // 검색이 없을 때의 처리
+//         $total_rows = $this->board->getAll();
+        $data['list'] = $this->board->get_data($config['per_page'], $offset);
+    }
+
+   
+
+    // 페이지에 해당하는 데이터 가져오기
+    if ($search_term) {
+        $data['pagination_links'] = $this->pagination->create_links();
+    } else {
+        $data['pagination_links'] = $this->pagination->create_links();
+    }
+
+    $this->load->view('board/list', $data);
     $this->load->view('footer');
   }
   

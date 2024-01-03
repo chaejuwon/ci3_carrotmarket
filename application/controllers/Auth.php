@@ -65,53 +65,26 @@ class Auth extends CI_Controller {
     $this->load->view('footer');
   }
   
-  public function authentication() {   
-//     $this->load->model('user_model');
-//     $user = $this->user_model->getByEmail(array(
-//       'email'=>$this->input->post('email')
-//     ));
-//     var_dump($user);
-//     if(
-//       $this->input->post('email') == $user->email &&
-//       password_verify($this->input->post('password'), $user->password)
-// //       $this->input->post('password') == $session_data['password'] 
-//     ) {
-// //       $user_id = $user->id;
-//         $this->session->set_userdata($user->email);	//session 등록
-//         $this->session->set_userdata($user->id);	//session 등록
-//         var_dump($user->id);
-
-//         $this->session->set_userdata('isLogin', true);
-//         $this->load->helper('url');
-//         redirect("/main");
-//     } else {       
-// //       var_dump($this->input->post('email'));
-// //          var_dump($_POST['email']);
-//         $this->load->helper('url');
-//         redirect("/auth/login");
-//     }
-//   }
+  public function authentication() {
     $this->load->model('user_model');
-$user = $this->user_model->getByEmail(array(
-    'email' => $this->input->post('email')
-));
-    var_dump($user->id);
+    $user = $this->user_model->getByEmail(array(
+        'email' => $this->input->post('email')
+    ));
 
-if ($user && password_verify($this->input->post('password'), $user->password)) {
-    $user_data = array(
-        'userid' => $user->id,
-        'email' => $user->email,
-        'isLogin' => true
-    );
+    if ($user && password_verify($this->input->post('password'), $user->password)) {
+      $user_data = array(
+          'userid' => $user->id,
+          'email' => $user->email,
+          'isLogin' => true
+      );
 
     $this->session->set_userdata($user_data);
 
     $this->load->helper('url');
     redirect("/main");
-} else {
-    $this->load->helper('url');
-    redirect("/auth/login");
-}
-  
-}
+    } else {
+        $this->load->helper('url');
+        redirect("/auth/login");
+    } 
+  }
 }

@@ -44,10 +44,7 @@ class Board_model extends CI_Model {
     $result = $this->db->update('board', $data);
   }
   
-  function getAll() {
-    $result = $this->db->count_all_results('board'); // 'board'는 테이블 이름에 맞게 수정
-    return $result;
-  }
+
   
   function detailget($id) {
     $this->db->select('u.id, u.nickname, b.id, b.title, b.content, b.created, b.modify, b.hit');
@@ -61,6 +58,11 @@ class Board_model extends CI_Model {
     $this->db->where('id', $id);
     $this->db->set('hit', 'hit+1', FALSE);
     $this->db->update('board');
+  }
+  
+  function getAll() {
+    $result = $this->db->count_all_results('board'); // 'board'는 테이블 이름에 맞게 수정
+    return $result;
   }
   
   public function get_data($per_page, $offset) {
@@ -84,10 +86,11 @@ class Board_model extends CI_Model {
   
   // 댓글 조회
   public function get_comment($boardId) {
-    $this->db->select('*');
-    $this->db->from('comment');
-    $this->db->where('board_id', $boardId);
-    $this->db->order_by('created', 'asc');
+    $this->db->select('u.id, u.nickname, c.board_id, c.comment, c.created, c.id as cId, c.modify, c.parent_id, c.userid');
+    $this->db->from('user as u');
+    $this->db->join('comment as c', 'u.id=c.userid', 'inner');
+    $this->db->where('c.board_id', $boardId);
+    $this->db->order_by('c.created', 'asc');
     $result = $this->db->get()->result();
     return $result;
   }
@@ -140,7 +143,7 @@ class Board_model extends CI_Model {
       }
     }
   
-  // 게시판 검색 기능
+    // 게시판 검색 기능
     public function search_board($search_term, $per_page, $offset) {
       // 제목에서 검색어를 포함하는 게시글 가져오기
       $this->db->select('u.id, u.nickname, b.user_id, b.id, b.title, b.content, b.created, b.modify, b.hit');
@@ -152,4 +155,14 @@ class Board_model extends CI_Model {
       $query = $this->db->get();
       return $query->result();
     }
+  
+
+  
+  function getSearchTotal($search_term) {
+    if($search_term) {
+      $this->db->like('title', $search_term);  
+    }    
+    $result = $this->db->count_all_results('board');
+    return $result;
+  }
 }

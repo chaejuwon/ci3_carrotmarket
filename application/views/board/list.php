@@ -24,7 +24,7 @@
         <div class="col-6">
           <form id="bd_search" method="get" action="/board/boardlist">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="검색어(제목)을 입력해주세요." name="search" id="search" aria-describedby="search-btn" value="">
+                <input type="text" class="form-control" placeholder="검색어(제목)을 입력해주세요." name="search" id="search" aria-describedby="search-btn" value="<?= $this->input->get('search') ?>">
                 <div class="input-group-append">
                   <button class="btn btn-success" type="submit" id="search-btn">검색</button>
                 </div>  
@@ -55,6 +55,7 @@
           <th>삭제</th>
         </thead>
         <tbody>
+          <?php if($search_term = $this->input->get('search')){ ?>
             <?php if (!empty($search)): ?>
                 <?php foreach ($search as $slist): ?>
                     <tr>
@@ -75,8 +76,11 @@
                         <td><a class="fw-bold" href="/board/boarddelete/<?= $slist->id ?>">삭제</a></td>
                     </tr>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <?php foreach($list as $entry): ?>
+            <?php elseif(empty($search)): ?>
+            <tr><td colspan="7">검색결과가 없습니다.</td></tr>                
+            <?php endif; ?>    
+          <?php } else { ?>
+            <?php foreach($list as $entry): ?>
                     <tr>
                         <td><?= $entry->id ?></td>
                         <td><a href="/board/boarddetail/<?= $entry->id ?>"><?= $entry->title ?></a></td>
@@ -95,9 +99,8 @@
                         <td><a class="fw-bold" href="/board/boarddelete/<?= $entry->id ?>">삭제</a></td>
                     </tr>
                 <?php endforeach; ?>
-            <?php endif; ?>          
-        </tbody>
-        
+          <?php } ?>                  
+        </tbody>        
       </table>
       <nav aria-label="Page navigation example" class="text-center">
         <ul class="pagination">
@@ -130,19 +133,5 @@
   </section>
 </main>
 <script>
-//    $("#search-btn").click(function() {
-//        if ($("#search").val() == '') {
-//            alert("검색어를 입력하세요!");
-//            return false;
-//        } else {
-//            var act = "/board/boardlist?search=" + $("#search").val();
-//            $("#bd_search").attr('action', act).submit();
-//        }
-//    });
-
-//    function board_search_enter(form) {
-//        var keycode = window.event.keyCode;
-//        if (keycode == 13)
-//            $("#search-btn").click();
-//    }
+  
 </script>

@@ -30,7 +30,7 @@
             <input class="form-control me-2" type="search" placeholder="물품이나 동네를 검색해보세요" aria-label="Search">
           </form>
         </div>
-        <div class="col-3 text-end">
+        <div class="col-2 text-end">
           <?php
             if($this->session->userdata('isLogin') == true){
           ?>

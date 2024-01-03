@@ -30,11 +30,44 @@
     <div class="section-container">
       <div class="row">
         <div class="col-12">
-          <h2>
-            공지사항
-          </h2>
+          <h2>게시판</h2>
         </div>
       </div>
+      <div class="social-feed-separated">
+          <div class="social-avatar">
+              <a href="javascript:">
+                  <img alt="image" src="/html/images/profile_small.jpg">
+              </a>
+          </div>
+          <div class="social-feed-box">
+              <div class="social-avatar">
+                  <a href="#"><?= $detail->title ?></a>
+                  <small class="text-muted d-inline-block ml-5"><?= $detail->created ?></small>
+              </div>
+              <div class="social-body">
+                  <p><?= $detail->content ?></p>
+                  <div class="btn-group">
+                      <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up fs-5"></i> Like this!</button>
+                      <button class="btn btn-white btn-xs"><i class="fa fa-comments fs-5"></i> Comment</button>
+                      <button class="btn btn-white btn-xs"><i class="fa fa-share fs-5"></i> Share</button>
+                  </div>
+              </div>
+              <div class="social-footer comment">
+                  <div class="comment-wrap"></div>
+                  <div class="social-comment">
+                      <a href="" class="float-start">
+                          <img alt="image" src="/html/images/profile_small.jpg">
+                      </a>
+                      <div class="media-body">
+                          <input type="hidden" name="board_id" class="board_id" id="board_id" data-board="<?= $detail->id ?>" value="<?= $detail->id ?>">
+                          <textarea class="chat-area comment" rows='6' id="comment" data-comment="<?= $detail->id ?>" name="comment"></textarea>    
+                          <a href="javascript:" style="width:100%" id="chatBtn" data-click="<?= $detail->id ?>" class="btn full-btn btn-success chatBtn">게시</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+<!--       
       <div class="row mt-30 mb-30 board-title">
         <div class="col-md-6">
           <h3 class="no-margins fw-bold">
@@ -52,7 +85,8 @@
         </div>
       </div>
       <hr>
-      <div class="comment-wrap"></div>        
+      <div class="comment-wrap"></div>
+      </div> -->
       <div class="row mt-30 align-items-start">
         <div class="col-1">
           <img alt="image" class="rounded-circle" src="/html/images/profile_small.jpg">
@@ -76,7 +110,7 @@
           <a class="btn btn-w-m btn-success" href="/board/boardlist">목록</a>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
   <section class="section section3" id="boardListSection3">
     <div class="section-container">
@@ -143,46 +177,91 @@ function commentFn() {
     success: function(res) {
       var comment = $('.comment-wrap');
       var list = '';
-      res.data.forEach(function(item, idx) {
-        if(item.parent_id == null) {          
-          list += '<div class="row mt-30">';
-          list +=  '<div class="col-11 offset-1">';
-          list +=    '<div class="ibox no-margins">';
-          list +=      '<div class="ibox-content">';
-          list +=        '<div class="row align-items-center">';
-          list +=          '<div class="col-2"><img alt="image" class="rounded-circle" src="/html/images/profile_small.jpg"><span class="d-inlin-block ml-10">글쓴이</span></div>';
-          list +=          '<div class="col-8"><p class="no-margins">' + item.comment + '</p></div>';
-          list +=          '<div class="col-2 d-grid align-items-center"><a href="javascript:" class="toggle-btn btn btn-success">답글등록</a></div>';
-          list +=        '</div>';   
+      res.data.forEach(function(item, idx) {    
+        console.log(item);
+        if(item.parent_id == null) { 
+        list +=      '<div class="social-comment">';
+        list +=           '<a href="" class="float-start">';
+        list +=               '<img alt="image" src="/html/images/profile_small.jpg">';
+        list +=           '</a>';
+        list +=           '<div class="media-body">';
+        list +=               '<a href="#" class="fw-bold mr-5">' + item.nickname + '</a>';
+        list +=               '' + item.comment + '';
+        list +=               '<br>';
+        list +=               '<a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -';
+        list +=               '<small class="text-muted">' + item.created + '</small>';
+        list +=           '</div>';        
         }
         if (Array.isArray(res.data)) {
           for (const items of res.data) {
-            if(items.parent_id === item.id) {
-              list += '<div class="row align-items-center mt-20">';
-              list +=   '<div class="col-2 offset-1"><img alt="image" class="rounded-circle" src="/html/images/profile_small.jpg"><span class="d-inlin-block ml-10">답변</span></div>';
-              list +=   '<div class="col-9"><p class="no-margins">' + items.comment + '</p></div>';
-              list += '</div>';
+            if(items.parent_id === item.cId) {
+        list +=      '<div class="social-comment">';
+        list +=          '<a href="" class="float-start">';
+        list +=              '<img alt="image" src="/html/images/profile_small.jpg">';
+        list +=          '</a>';
+        list +=          '<div class="media-body">';
+        list +=              '<a href="#" class="mr-5 fw-bold">' + items.title + '</a>';
+        list +=              '' + items.comment + '';
+        list +=              '<br>';
+        list +=              '<a href="#" class="small"><i class="fa fa-thumbs-up"></i> 11 Like this!</a> -';
+        list +=              '<small class="text-muted">' + items.created + '</small>';
+        list +=          '</div>';
+        list +=        '</div>';
             }
           }
-        } else {
-          console.error("res.data is not an array or is undefined.");
-        }
-        list +=        '<div class="toggle-area col-12 mt-20 hide">';
-        list +=          '<div class="row">';
-        list +=            '<div class="col-11">';
-        list +=                '<input type="hidden" class="parent_id" name="parent_id" data-parent="' + item.id + '" value="' + item.id + '">';
-        list +=                '<input type="hidden" class="board_id" name="board_id" data-board="' + item.id + '" value="<?= $detail->id ?>">';
-        list +=                '<textarea class="chat-area subcomment" rows="2" data-comment="' + item.id + '" name="comment"></textarea>';
+        }       
+        list +=         '<div class="social-comment">';    
+        list +=           '<a href="" class="float-start">';
+        list +=             '<img alt="image" src="/html/images/profile_small.jpg">';
+        list +=           '</a>';
+        list +=           '<div class="media-body">';
+        list +=             '<input type="hidden" class="parent_id" name="parent_id" data-parent="' + item.id + '" value="' + item.cId + '">';
+        list +=             '<input type="hidden" class="board_id" name="board_id" data-board="' + item.id + '" value="<?= $detail->id ?>">';
+        list +=             '<textarea class="chat-area subcomment" rows="2" data-comment="' + item.id + '" name="comment"></textarea>';
+        list +=             '<a href="javascript:" style="width:100%" id="subChatBtn" data-click="' + item.id + '" class="btn btn-success subChatBtn">등록</a>';
         list +=            '</div>';
-        list +=            '<div class="col-1 d-grid align-items-center">';
-        list +=              '<a href="javascript:" id="subChatBtn" data-click="' + item.id + '" class="btn btn-success subChatBtn">등록</a>';
-        list +=            '</div></div></div></div></div></div></div>';
-        list +=        '</div>';                                                                                            
-      });
-      comment.html(list);
+        list +=         '</div></div>';                                                                                          
+       });
+       comment.html(list);
+//         if(item.parent_id == null) { 
+//           list += '<div class="row mt-30">';
+//           list +=  '<div class="col-11 offset-1">';
+//           list +=    '<div class="ibox no-margins">';
+//           list +=      '<div class="ibox-content">';
+//           list +=        '<div class="row align-items-center">';
+//           list +=          '<div class="col-2"><img alt="image" class="rounded-circle" src="/html/images/profile_small.jpg"><span class="d-inlin-block ml-10">글쓴이</span></div>';
+//           list +=          '<div class="col-8"><p class="no-margins">' + item.comment + '</p></div>';
+//           list +=          '<div class="col-2 d-grid align-items-center"><a href="javascript:" class="toggle-btn btn btn-success">답글등록</a></div>';
+//           list +=        '</div>';   
+//         }
+//         if (Array.isArray(res.data)) {
+//           for (const items of res.data) {
+//             if(items.parent_id === item.id) {
+//               list += '<div class="row align-items-center mt-20">';
+//               list +=   '<div class="col-2 offset-1"><img alt="image" class="rounded-circle" src="/html/images/profile_small.jpg"><span class="d-inlin-block ml-10">답변</span></div>';
+//               list +=   '<div class="col-9"><p class="no-margins">' + items.comment + '</p></div>';
+//               list += '</div>';
+//             }
+//           }
+//         }
+//         list +=        '<div class="toggle-area col-12 mt-20 hide">';
+//         list +=          '<div class="row">';
+//         list +=            '<div class="col-11">';
+//         list +=                '<input type="hidden" class="parent_id" name="parent_id" data-parent="' + item.id + '" value="' + item.id + '">';
+//         list +=                '<input type="hidden" class="board_id" name="board_id" data-board="' + item.id + '" value="<?= $detail->id ?>">';
+//         list +=                '<textarea class="chat-area subcomment" rows="2" data-comment="' + item.id + '" name="comment"></textarea>';
+//         list +=            '</div>';
+//         list +=            '<div class="col-1 d-grid align-items-center">';
+//         list +=              '<a href="javascript:" id="subChatBtn" data-click="' + item.id + '" class="btn btn-success subChatBtn">등록</a>';
+//         list +=            '</div></div></div></div></div></div></div>';
+//         list +=        '</div>';                                                                                            
+//       });
+//              comment.html(list);
+
 
       $('.toggle-btn').on('click', function(){
-        $(this).closest('.ibox-content').find('.toggle-area').toggleClass('hide');
+        alert('123');
+        $(this).closest('.social-feed-box').find('.toggle-area').toggleClass('hide');
       });
         
         $('.subChatBtn').on('click', function() {
