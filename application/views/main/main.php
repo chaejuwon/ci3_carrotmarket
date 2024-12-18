@@ -3,7 +3,7 @@
     <div class="section-container">
       <div class="row align-items-center">
         <div class="col-md-6">
-          <h2 class="font-bold">당신 근처의<br>지역 생활 커뮤니티</h2>
+          <h2 class="font-bold">당신 근처의<br>지역 생활 커뮤니티123</h2>
           <p class="fs-4 mb-20 mt-20">동네라서 가능한 모든 것<br>당근에서 가까운 이웃과 함께해요.</p>
           <div class="d-flex">
               <a class="btn btn-orange d-flex align-items-center text-white justify-content-center" href="javascript:" alt="App Store"><i class="mr-5 fs-5 fa fa-apple"></i><span>App Store</span></a>
