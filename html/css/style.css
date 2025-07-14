@@ -6,7 +6,6 @@
 	z-index: 3;
 	width: 100%;
 }
-
 .navbar {
 	height: 60px;
 }
@@ -279,10 +278,6 @@
 	width: 33.333%;
 }
 
-.footer-container ul:nth-child(3) {
-	margin-right: 50px;
-}
-
 .footer-container ul li {
 	list-style-type: none;
 	margin: 16px;
@@ -370,7 +365,7 @@ a {
 	}
 
 	#main {
-		padding-top: 50px;
+		padding-top: 60px;
 	}
 
 	.footer-container {
@@ -383,6 +378,9 @@ a {
 
 	.img-wrap img {
 		width: 60%;
+	}
+	.footer-container ul {
+		text-align: center;
 	}
 }
 

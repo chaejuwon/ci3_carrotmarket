@@ -1,8 +1,8 @@
 <main id="main">
   <section class="section section1" id="jobsListSection1">
     <div class="section-container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
+      <div class="row no-margins align-items-center">
+        <div class="col-md-6 p-md">
           <h2 class="fs-1 fw-bolder">
             우리 동네에서 내용 찾는<br>당근알바
           </h2>
@@ -21,11 +21,21 @@
   
   <section class="section section2" id="jobsListSection2">
     <div class="section-container">
-      <div class="d-flex justify-content-between mb-30">
-        <h3 class="no-margins fs-3 fw-bold">인기 당근알바</h3>
-        <a class="float-right btn btn-warning" href="/jobs/jobspush">등록하기</a>
-      </div>      
-      <div class="row">
+		<div class="row p-w-md m-b-md">
+			<div class="col-6">
+				<h3 class="no-margins fs-3 fw-bold">인기 당근알바</h3>
+			</div>
+			<div class="col-6">
+				<?php
+				if($this->session->userdata('isLogin') == true){
+					?>
+					<div class="text-end">
+						<a class="float-right btn btn-warning" href="/jobs/jobspush">등록하기</a>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+      <div class="row no-margins">
         <?php foreach($list as $entry) { ?>         
         <div class="col-md-4">
           <a href="/jobs/jobsdetail/<?= $entry->id ?>">

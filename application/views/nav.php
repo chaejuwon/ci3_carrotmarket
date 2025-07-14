@@ -9,16 +9,16 @@
           </a>
           <ul class="navbar-nav mb-2 mb-lg-0">           
             <li class="nav-item ml-5">
-              <a class="nav-link active" aria-current="page" href="/market/marketlist" data-path="marketlist">중고거래</a>
+              <a class="nav-link active" aria-current="page" href="/market/marketlist" data-path="market">중고거래</a>
+            </li>
+<!--            <li class="nav-item ml-5">-->
+<!--              <a class="nav-link" href="/market/imgpush" data-path="imgpush">이미지업로드</a>-->
+<!--            </li>-->
+            <li class="nav-item ml-5">
+              <a class="nav-link" href="/jobs/jobslist" data-path="jobs">구인/구직</a>
             </li>
             <li class="nav-item ml-5">
-              <a class="nav-link" href="/market/imgpush" data-path="imgpush">이미지업로드</a>
-            </li>
-            <li class="nav-item ml-5">
-              <a class="nav-link" href="/jobs/jobslist" data-path="jobslist">알바</a>
-            </li>
-            <li class="nav-item ml-5">
-              <a class="nav-link" href="/board/boardlist" data-path="boardlist">커뮤니티</a>
+              <a class="nav-link" href="/board/boardlist" data-path="board">커뮤니티</a>
             </li>
           </ul>
         </div>
@@ -59,8 +59,7 @@
 			  <ul class="nav flex-column">
 				  <li class="nav-item"><a class="nav-link" href="/">메인화면</a></li>
 				  <li class="nav-item"><a class="nav-link" href="/market/marketlist">중고거래</a></li>
-				  <li class="nav-item"><a class="nav-link" href="/market/imgpush">이미지업로드</a></li>
-				  <li class="nav-item"><a class="nav-link" href="/jobs/jobslist">알바</a></li>
+				  <li class="nav-item"><a class="nav-link" href="/jobs/jobslist">구인/구직</a></li>
 				  <li class="nav-item"><a class="nav-link" href="/board/boardlist">커뮤니티</a></li>
 			  </ul>
 		  </div>
@@ -70,11 +69,11 @@
 <script>
 	const path = window.location.pathname;
 	const realPath  = path.split('/');
-
+	console.log(realPath);
 	$('.nav-link').each(function (){
 		const dataPath = $(this).data('path');
 
-		if(dataPath === realPath[2]) {
+		if(dataPath === realPath[1]) {
 			$('.nav-link').removeClass('active');
 			$(this).addClass('active');
 		}
