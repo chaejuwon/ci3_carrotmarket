@@ -1,7 +1,7 @@
   <section class="section section3" id="boardListSection3">
     <div class="section-container">
-      <div class="row">
-        <div class="col-md-2 text-center auto-m">
+      <div class="row align-items-center">
+        <div class="col-md-2 text-center mb-2 mb-sm-0">
           <h4 class="font-bold popular">중고 거래 인기 검색어</h4>
         </div>
         <div class="col-md-10">

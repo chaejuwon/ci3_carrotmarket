@@ -1,5 +1,5 @@
 <!-- 깃 푸쉬 해보자 -->
-<header id="header" class="bg-white">
+<header id="header" class="bg-white bg-shadow">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light pc-version">
       <div class="container-fluid align-items-center row">

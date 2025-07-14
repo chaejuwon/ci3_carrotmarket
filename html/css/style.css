@@ -2,259 +2,302 @@
 
 /* header */
 #header {
-  position:fixed;
-  z-index:3;
-  width:100%;
+	position: fixed;
+	z-index: 3;
+	width: 100%;
 }
+
 .navbar {
-  height:60px;
+	height: 60px;
 }
+
 .navbar-nav {
-  float:right;
+	float: right;
 }
+
 .nav-link {
-  font-size:20px;
-  font-weight:bold;
+	font-size: 20px;
+	font-weight: bold;
 }
+
 .h-50px {
 	height: 50px;
 }
+
 /* section 공통 */
 #main {
-  position:relative;
-  z-index:2;
-  padding-top:60px;
+	position: relative;
+	z-index: 2;
+	padding-top: 60px;
 }
+
 .section-container {
-  width:100%;
-  max-width:1100px;
-  margin:0 auto;
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
 }
+
 .img-wrap {
-  width:100%;
+	width: 100%;
 }
+
 .img-wrap img {
-  width:100%;
+	width: 100%;
 }
+
 .section h2 {
-  font-size:40px;
+	font-size: 40px;
 }
+
 .icon-wrap {
-  width:56px;
-  height:56px;
-  border-radius:10px;
-  background:#ffdac1;
+	width: 56px;
+	height: 56px;
+	border-radius: 10px;
+	background: #ffdac1;
 }
+
 .icon-orange {
-  color:#f06000;
+	color: #f06000;
 }
+
 .font-orange {
-  color:#f06000;
+	color: #f06000;
 }
+
 .itemImg {
-  width:100%;
-  border-radius:10px;
-  height:150px;
-  overflow:hidden;
-  display:flex;
+	width: 100%;
+	border-radius: 10px;
+	height: 150px;
+	overflow: hidden;
+	display: flex;
 }
+
 .itemImg img {
-  width:100%;
-  border-radius: 10px;
+	width: 100%;
+	border-radius: 10px;
 }
+
 .popular {
-  font-weight:bold;
-  text-decoration:underline;
-  margin:auto 0;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: auto 0;
 }
 
 /* -------------------main/main------------------------- */
 /* mainSection1 */
 #mainSection1 {
-  background:#FFFAE0;
+	background: #FFFAE0;
 }
 
 /* mainSection2 */
 #mainSection2 {
-  background:#f9f9f9;
+	background: #f9f9f9;
 }
 
 /* mainSection3 */
 #mainSection3 {
-  background:#FFF8F1;
+	background: #FFF8F1;
 }
 
 /* mainSection4 */
 #mainSection4 {
-  background:#f9f9f9;
+	background: #f9f9f9;
 }
 
 /* mainSection5 */
 #mainSection5 {
-  background:#F6FDEC;
+	background: #F6FDEC;
 }
+
 /* -------------------main/main------------------------- */
 
 /* -----------------market/list---------------------------- */
 /* mainListSection1 */
 #marketListSection1 {
-  background:#FFF1AA;
+	background: #FFF1AA;
 }
 
 /* mainListSection2 */
 #marketListSection2 {
-  background:#FFFFFF;
-  padding:50px 0;
+	background: #FFFFFF;
+	padding: 50px 0;
 }
 
 /* mainListSection3 */
 #marketListSection3 {
-  background:#F8F9FA;
-  padding:20px 0;
+	background: #F8F9FA;
+	padding: 20px 0;
 }
+
 /* -----------------market/list---------------------------- */
 
 /* -----------------market/listDetail---------------------------- */
 /* mainListSection1 */
 #marketDetailSection1 {
-  background:#FFFFFF;
+	background: #FFFFFF;
 }
 
 /* mainListSection2 */
 #marketDetailSection2 {
-  background:#FFFFFF;
+	background: #FFFFFF;
 }
 
 /* mainListSection3 */
 #marketDetailSection3 {
-  background:#FFFFFF;
-  padding:20px 0;
+	background: #FFFFFF;
+	padding: 20px 0;
 }
 
 .detail-container {
-  width:100%;
-  max-width:700px;
-  margin:0 auto;
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
 }
+
 /* -----------------market/listDetail---------------------------- */
 
 /* -----------------market/login----------------------- */
 #login {
-  padding:30px 0;
+	padding: 30px 0;
 }
+
 /* -----------------market/login----------------------- */
 
 /* -----------------board/list----------------------- */
 #boardListSection1 {
-  background:#d2edfa;
+	background: #d2edfa;
 }
+
 #boardListSection2 {
-  background:#FFFFFF;
-  padding:50px 0;
+	background: #FFFFFF;
+	padding: 50px 0;
 }
+
 #boardListSection3 {
-  background:#F8F9FA;
-  padding:20px 0;
+	background: #F8F9FA;
+	padding: 20px 0;
 }
+
 /* -----------------board/list----------------------- */
 
 /* -----------------board/detail----------------------- */
 #boardDetailSection1 {
-  background:#d2edfa;
+	background: #d2edfa;
 }
+
 #boardDetailSection2 {
-  background:#FFFFFF;
-  padding:50px 0;
+	background: #FFFFFF;
+	padding: 50px 0;
 }
+
 #boardDetailSection3 {
-  background:#F8F9FA;
-  padding:20px 0;
+	background: #F8F9FA;
+	padding: 20px 0;
 }
+
 .board-title {
-  padding:20px 0 20px 30px;
-  border-top:1px solid #333333;
-  border-bottom:1px solid #333333;
+	padding: 20px 0 20px 30px;
+	border-top: 1px solid #333333;
+	border-bottom: 1px solid #333333;
 }
+
 .btn-group i {
-  font-size:35px;
+	font-size: 35px;
 }
+
 .chat-area {
-  appearance:none;
-  border:none;
-  background:#eee;
-  width:100%;
-  resize: none;
-  margin-top:5px;
+	appearance: none;
+	border: none;
+	background: #eee;
+	width: 100%;
+	resize: none;
+	margin-top: 5px;
 }
+
 /* -----------------board/detail----------------------- */
 /* -----------------jobs/list-------------------- */
 #jobsListSection1 {
-  background:#ffe2d2;
-  padding-top:30px;
+	background: #ffe2d2;
+	padding-top: 30px;
 }
+
 #jobsListSection2 {
-  background:#ffffff;
-  padding:50px 0;
+	background: #ffffff;
+	padding: 50px 0;
 }
 
 .job-img-wrap {
-  width:30%;
-  border-radius:10px;
-  overflow:hidden;
+	width: 30%;
+	border-radius: 10px;
+	overflow: hidden;
 }
+
 .job-img-wrap img {
-  border-radius:10px;
+	border-radius: 10px;
+	min-height: 100px;
 }
+
 .job-text-wrap {
-  width:70%;
-  margin:auto 0 auto 10px;
+	width: 70%;
+	margin: auto 0 auto 10px;
 }
+
 .jobs-text-margin {
-  margin-top:5px;
-  margin-bottom:5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
+
 /* -----------------jobs/list-------------------- */
 
 /* -----------------jobs/Deatil-------------------- */
 #jobsDetailSection1 {
-  background:#ffffff;
+	background: #ffffff;
 }
+
 #jobsDetailSection2 {
-  padding:20px 0 30px;
+	padding: 20px 0 30px;
 }
+
 /* -----------------jobs/Deatil-------------------- */
 
 /* -----------------footer--------------------------------- */
 #footer {
-  z-index:1;
-  border-top:1px solid #eee;
+	z-index: 1;
+	border-top: 1px solid #eee;
 }
+
 .footer-container {
-  width:100%;
-  max-width:1100px;
-  margin:0 auto;
-  padding:50px 0;
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 50px 0;
 }
+
 .footer-container ul {
-  margin:0;
-  padding:0;
-  width:33.333%;
+	margin: 0;
+	padding: 0;
+	width: 33.333%;
 }
+
 .footer-container ul:nth-child(3) {
-  margin-right:50px;
+	margin-right: 50px;
 }
+
 .footer-container ul li {
-  list-style-type:none;
-  margin:16px;
+	list-style-type: none;
+	margin: 16px;
 }
+
 .footer-container ul li a {
-  font-size:16px;
-  transition:all .3s;
+	font-size: 16px;
+	transition: all .3s;
 }
+
 .footer-container ul li a:hover {
-  text-decoration:underline;
-  color:#444;
+	text-decoration: underline;
+	color: #444;
 }
+
 /* -----------------footer--------------------------------- */
 
 /* -----------------pagination---------------------- */
@@ -263,37 +306,41 @@
 
 /*  */
 table {
-  border: 1px #a39485 solid;
-  font-size: .9em;
-  box-shadow: 0 2px 5px rgba(0,0,0,.25);
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
+	border: 1px #a39485 solid;
+	font-size: .9em;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 5px;
+	overflow: hidden;
 }
 
 th {
-  text-align: center;
+	text-align: center;
 }
-  
+
 thead {
-  font-weight: bold;
-  color: #fff;
-  background: #63cafb;
+	font-weight: bold;
+	color: #fff;
+	background: #63cafb;
 }
-  
- td, th {
-  padding: 1em .5em;
-  vertical-align: middle;
+
+td, th {
+	padding: 1em .5em;
+	vertical-align: middle;
 }
-  
- td {
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  background: #fff;
+
+td {
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	background: #fff;
 }
 
 a {
-  color: #73685d;
+	color: #73685d;
+}
+
+.bg-shadow {
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .05);
 }
 
 /* 데스크탑 (1024px 이상) */
@@ -301,6 +348,7 @@ a {
 	.pc-version {
 		display: block;
 	}
+
 	.mo-version {
 		display: none;
 	}
@@ -316,15 +364,25 @@ a {
 	.pc-version {
 		display: none;
 	}
+
 	.mo-version {
 		display: flex;
 	}
+
 	#main {
 		padding-top: 50px;
 	}
+
 	.footer-container {
 		padding: 0;
 	}
-}
 
+	.img-wrap {
+		text-align: center;
+	}
+
+	.img-wrap img {
+		width: 60%;
+	}
+}
 
