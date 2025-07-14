@@ -2,16 +2,10 @@
   <input type="hidden" value="<?= $detail->id ?>" id="pid">
   <section class="section section1" id="marketDetailSection1">
     <div class="detail-container">
-      <div style="height:400px;overflow:hidden;border-radius:20px;">
+      <div>
         <div id="slider-div">
           <div class="img-wrap">
             <img class="item" src="/uploads/<?= $detail->filename ?>" alt="">
-          </div>
-          <div class="img-wrap">
-            <img src="/html/images/item2.jpg" alt="">
-          </div>
-          <div class="img-wrap">
-            <img src="/html/images/item3.jpg" alt="">
           </div>
         </div>
 	    </div>
@@ -19,7 +13,7 @@
   </section>
   <section class="section section2" id="marketDetailSection2">
     <div class="detail-container">
-      <div class="row mt-20">
+      <div class="row no-margins mt-20">
         <div class="col-12">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
@@ -40,7 +34,7 @@
           </div>
         </div>
       <hr>
-      <div class="row">
+      <div class="row no-margins">
         <div class="col-12">
           <h3 class="font-bold no-margins"><?= $detail->title ?></h3>
           <span class="fs-13 d-inline-block mb-8 mt-8">디지털기기·9시간 전</span>
@@ -58,10 +52,10 @@
     <div class="detail-container">
       <hr>
       <div class="pt-20 d-flex align-items-center justify-content-between">        
-        <h3 class="font-bold">당근 인기중고</h3>
+        <h3 class="font-bold">당근 인기중고1</h3>
         <a href="" class="">더 구경하기</a>
       </div>
-      <div class="row" id="itemWrap">
+      <div class="row no-margins" id="itemWrap">
         <?php foreach($list as $entry) { ?>
         <div class="col-md-4">
             <a href="https://cjw02141.cafe24.com/market/marketdetail/<?=$entry->id ?>">

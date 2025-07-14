@@ -240,7 +240,7 @@ class Market extends CI_Controller {
     } else {
         // 업로드 실패 시 응답 데이터 설정
         $response['success'] = false;
-        $response['error'] = $this->upload->display_errors();
+		$response['error'] = $this->upload->display_errors();
     }
 
     if ($this->input->is_ajax_request()) {

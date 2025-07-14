@@ -1,3 +1,5 @@
+/* 부트스트랩 css변경 */
+
 /* header */
 #header {
   position:fixed;
@@ -5,7 +7,7 @@
   width:100%;
 }
 .navbar {
-  height:80px;
+  height:60px;
 }
 .navbar-nav {
   float:right;
@@ -14,12 +16,14 @@
   font-size:20px;
   font-weight:bold;
 }
-
+.h-50px {
+	height: 50px;
+}
 /* section 공통 */
 #main {
   position:relative;
   z-index:2;
-  padding-top:80px;
+  padding-top:60px;
 }
 .section-container {
   width:100%;
@@ -291,47 +295,36 @@ thead {
 a {
   color: #73685d;
 }
-  
- @media all and (max-width: 768px) {
-    
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-  
-  th {
-    text-align: right;
-  }
-  
-  table {
-    position: relative; 
-    padding-bottom: 0;
-    border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
-  }
-  
-  thead {
-    float: left;
-    white-space: nowrap;
-  }
-  
-  tbody {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  tr {
-    display: inline-block;
-    vertical-align: top;
-  }
-  
-  th {
-    border-bottom: 1px solid #a39485;
-  }
-  
-  td {
-    border-bottom: 1px solid #e5e5e5;
-  }  
-  
-  }
+
+/* 데스크탑 (1024px 이상) */
+@media screen and (min-width: 1024px) {
+	.pc-version {
+		display: block;
+	}
+	.mo-version {
+		display: none;
+	}
+}
+
+/* 태블릿 (768px 이상 ~ 1023px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+}
+
+/* 모바일 (최대 767px) */
+@media screen and (max-width: 767px) {
+	.pc-version {
+		display: none;
+	}
+	.mo-version {
+		display: flex;
+	}
+	#main {
+		padding-top: 50px;
+	}
+	.footer-container {
+		padding: 0;
+	}
+}
+
+

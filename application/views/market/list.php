@@ -1,8 +1,8 @@
 <main id="main">
   <section class="section section1" id="marketListSection1">
     <div class="section-container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
+      <div class="row no-margins align-items-center">
+        <div class="col-md-6 p-md">
           <h2 class="fs-1 fw-bolder">
             믿을만한<br>이웃 간 중고거래
           </h2>
@@ -24,18 +24,18 @@
       <?php
         if($this->session->userdata('isLogin') == true){
       ?>
-      <div class="text-end">
-        <a href="/market/marketpush" class="btn btn-warning mb-30 mr-20">등록하기</a>  
+      <div class="text-end mb-30 mr-20">
+        <a href="/market/marketpush" class="btn btn-warning">등록하기</a>
       </div>  
       <?php } ?>
-      <div class="row" id="itemWrap">
+      <div class="row no-margins" id="itemWrap">
         <?php foreach($list as $entry) { ?>
         <div class="col-md-3">
             <a href="https://cjw02141.cafe24.com/market/marketdetail/<?=$entry->id ?>">
               <div class="ibox no-margins">
                 <div class="ibox-content no-borders">
                   <div class="itemImg"><img src="/uploads/<?= $entry->filename ?>" alt="<?= $entry->filename ?>"></div>
-                  <div class="row">
+                  <div class="row no-margins">
                     <div class="col-12 mt-20"><h4 class="fs-15 no-margins"><?=$entry->title ?></h4></div>
                     <div class="col-12"><h4 class="font-bold"><?=$entry->price ?>원</h4></div>
                     <div class="col-12"><h4 class="fs-15 no-margins text-truncate"><?=$entry->address ?></h4></div>

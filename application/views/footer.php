@@ -1,7 +1,7 @@
     <footer id="footer">
       <div class="footer-container">
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row no-margins">
+          <div class="col-md-6 p-md">
             <nav class="footer-nav d-flex">
               <ul>
                 <li class=""><a href="javascript:">중고거래</a></li>
@@ -21,7 +21,7 @@
               </ul>
             </nav>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 p-md">
             <h4 class="font-bold">당근 앱 다운로드</h4>
             <div class="d-flex">
               <a class="btn btn-outline btn-gray d-flex align-items-center" href="javascript:" alt="App Store"><i class="mr-5 fs-4 fa fa-apple"></i><span>App Store</span></a>
