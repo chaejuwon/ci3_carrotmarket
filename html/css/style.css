@@ -1,5 +1,28 @@
 /* 부트스트랩 css변경 */
-
+.w-50 {
+	width: 50px !important;
+	min-width: 50px !important;
+}
+.w-100 {
+	width: 100px !important;
+	min-width: 100px !important;
+}
+.w-150 {
+	width: 150px !important;
+	min-width: 150px !important;
+}
+.w-200 {
+	width: 200px !important;
+	min-width: 200px !important;
+}
+.w-250 {
+	width: 250px !important;
+	min-width: 250px !important;
+}
+.w-300 {
+	width: 300px !important;
+	min-width: 300px !important;
+}
 /* header */
 #header {
 	position: fixed;
@@ -300,14 +323,16 @@
 /* -----------------pagination---------------------- */
 
 /*  */
+.responsive {
+	padding: 0 15px;
+}
 table {
-	border: 1px #a39485 solid;
 	font-size: .9em;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
 	width: 100%;
 	border-collapse: collapse;
 	border-radius: 5px;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 th {
@@ -381,6 +406,12 @@ a {
 	}
 	.footer-container ul {
 		text-align: center;
+	}
+	/* 테이블 반응형 */
+
+	.responsive {
+		overflow-x: scroll;
+
 	}
 }
 
